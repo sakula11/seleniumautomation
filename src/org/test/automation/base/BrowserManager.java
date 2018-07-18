@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class BrowserManager {
 
-	public static WebDriver _Driver = null;
+	protected static WebDriver _Driver = null;
 	String CURRENTDIR = System.getProperty("user.dir");
 
 	@BeforeMethod
@@ -35,8 +35,8 @@ public class BrowserManager {
 
 	@AfterMethod
 	public void tearDown() {
-		_Driver.close();
-		_Driver.quit();
+//		_Driver.close();
+//		_Driver.quit();
 
 	}
 

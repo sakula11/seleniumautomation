@@ -4,33 +4,36 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.test.automation.base.BrowserManager;
+import org.test.automation.base.Helper;
 import org.testng.annotations.Test;
 
 public class GmailLogin extends BrowserManager{
 	
 	
 	@Test
-	public void testGmailLogin()
+	public void testGmailLogin() throws InterruptedException
 	{
 		_Driver.get("https://mail.google.com");
 		
-		WebDriverWait wait = new WebDriverWait(_Driver, 30);
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.linkText("Sign In")));
+		try
+		{
 		
+			_Driver.findElement(By.xpath("//a[text()='Sign In']")).click();
+		}
+		catch(Exception e)
+		{
+			
+		}
 		
-		//xpath
+		//_Driver.findElement(By.linkText("Sign In")).click();
 		
-//		_Driver.findElement(By.xpath("//a[text()='Sign In']")).click();
+		Helper.enterText(By.id("identifierId"), "testautomation");
 		
-		_Driver.findElement(By.linkText("Sign In")).click();
+		Helper.click(By.xpath("//span[text()='Next']"));
 		
-		_Driver.findElement(By.id("identifierId")).sendKeys("testautomation");
+		Helper.enterText(By.name("password"), "tested");
 		
-		_Driver.findElement(By.xpath("//span[text()='Next']")).click();		
-		
-		_Driver.findElement(By.name("password")).sendKeys("tested");
-		
-		_Driver.findElement(By.xpath("//span[text()='Next']")).click();
+		Helper.click(By.xpath("//span[text()='Next']"));
 		
 		
 		
