@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="18286" started-at="2018-07-19T02:24:44Z" finished-at="2018-07-19T02:25:03Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="18286" started-at="2018-07-19T02:24:44Z" finished-at="2018-07-19T02:25:03Z">
+      <class name="org.test.automation.test.GmailTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="setup" is-config="true" duration-ms="4773" started-at="2018-07-18T22:24:44Z" finished-at="2018-07-18T22:24:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="testGmailLogin()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="testGmailLogin" duration-ms="11106" started-at="2018-07-18T22:24:49Z" finished-at="2018-07-18T22:25:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGmailLogin -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="tearDown" is-config="true" duration-ms="2376" started-at="2018-07-18T22:25:00Z" finished-at="2018-07-18T22:25:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- org.test.automation.test.GmailTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -35,8 +35,8 @@ public class BrowserManager {
 
 	@AfterMethod
 	public void tearDown() {
-//		_Driver.close();
-//		_Driver.quit();
+		_Driver.close();
+		_Driver.quit();
 
 	}
 
