@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18286" started-at="2018-07-19T02:24:44Z" finished-at="2018-07-19T02:25:03Z">
+  <suite name="Default suite" duration-ms="23630" started-at="2018-07-20T02:19:59Z" finished-at="2018-07-20T02:20:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18286" started-at="2018-07-19T02:24:44Z" finished-at="2018-07-19T02:25:03Z">
+    <test name="Default test" duration-ms="23630" started-at="2018-07-20T02:19:59Z" finished-at="2018-07-20T02:20:23Z">
       <class name="org.test.automation.test.GmailTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="setup" is-config="true" duration-ms="4773" started-at="2018-07-18T22:24:44Z" finished-at="2018-07-18T22:24:49Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="setup" is-config="true" duration-ms="3945" started-at="2018-07-19T22:19:59Z" finished-at="2018-07-19T22:20:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="testGmailLogin()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="testGmailLogin" duration-ms="11106" started-at="2018-07-18T22:24:49Z" finished-at="2018-07-18T22:25:00Z">
+        <test-method status="PASS" signature="testGmailLogin()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="testGmailLogin" duration-ms="17056" started-at="2018-07-19T22:20:03Z" finished-at="2018-07-19T22:20:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGmailLogin -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="tearDown" is-config="true" duration-ms="2376" started-at="2018-07-18T22:25:00Z" finished-at="2018-07-18T22:25:03Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.test.automation.test.GmailTest@337d0578]" name="tearDown" is-config="true" duration-ms="2588" started-at="2018-07-19T22:20:20Z" finished-at="2018-07-19T22:20:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

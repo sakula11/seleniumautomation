@@ -23,7 +23,7 @@ public class GmailLogin extends BrowserManager {
 	}
 
 	public void enterGmailPassword() {
-		Helper.enterText(passwordTextField, "@Lt12345");
+		Helper.enterText(passwordTextField, "@1234five");
 	}
 	
 	public boolean verifyComposeButtonIsDisplayed()
