@@ -7,44 +7,36 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GmailTest extends BrowserManager {
-	
-	private GmailLogin login = new GmailLogin();
-	
-	private GmailCompose gmailCompose=new GmailCompose();
-	
+
+	private GmailLoginPage login = new GmailLoginPage();
+
+	private GmailComposePage gmailCompose = new GmailComposePage();
+
 	@Test
-	public void testGmailLogin() throws InterruptedException, GmailException
-	{
-		_Driver.get("https://mail.google.com");
-		
-		try
-		{
-		
+	public void testGmailLogin() throws InterruptedException, GmailException {
+
+		try {
+
 			_Driver.findElement(By.xpath("//a[text()='Sign In']")).click();
+		} catch (Exception e) {
+
 		}
-		catch(Exception e)
-		{
-			
-		}
-		
+
 		login.enterGmailUserName();
 		login.clickNextButton();
 		login.enterGmailPassword();
 		login.clickNextButton();
-		
+
 		Assert.assertTrue(login.verifyComposeButtonIsDisplayed());
-		
+
 		gmailCompose.clickComposeButton();
-		gmailCompose.selectToField();
-		gmailCompose.enterTextToField();
-		gmailCompose.enterTextsubjectField();
-		gmailCompose.selectmailBody();
-		gmailCompose.enterTextmailBody();
-		gmailCompose.clickSend();
-		
+		gmailCompose.enterEmailIDsInToField();
+		gmailCompose.enterSubject();
+		gmailCompose.enterEmailBody();
+		gmailCompose.clickSendButton();
+
 		Assert.assertTrue(gmailCompose.verifySuccessMessage());
-		
-		
+
 	}
 
 }

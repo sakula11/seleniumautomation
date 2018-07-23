@@ -16,5 +16,6 @@
 	<classpathentry exported="true" kind="lib" path="Libs/okhttp-3.10.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="Libs/okio-1.14.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="Libs/testng-6.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/log4j.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
