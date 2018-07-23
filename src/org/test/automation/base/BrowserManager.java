@@ -2,6 +2,7 @@ package org.test.automation.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.test.automation.exception.GmailException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -16,7 +17,7 @@ public class BrowserManager {
 
 	}
 
-	private WebDriver getDriverObject(String browserName) throws Exception {
+	private WebDriver getDriverObject(String browserName) throws GmailException {
 
 		switch (browserName) {
 		case "CHROME":
@@ -27,7 +28,7 @@ public class BrowserManager {
 		case "FIREFOX":
 			break;
 		default:
-			throw new Exception("Invalid browserName");
+			throw new GmailException("Invalid browserName");
 		}
 		return _Driver;
 

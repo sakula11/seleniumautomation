@@ -3,6 +3,7 @@ package org.test.automation.test;
 import org.openqa.selenium.By;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.base.Helper;
+import org.test.automation.exception.GmailException;
 
 public class GmailComposeAutomation extends BrowserManager
 {
@@ -24,30 +25,30 @@ public class GmailComposeAutomation extends BrowserManager
 	
 	//By 
 	
-	public void clickgmailComposebutton()
+	public void clickgmailComposebutton() throws GmailException
 	
 	{
 		Helper.click(gmailComposeButton);
 	}
 	
-	public void texttoField()
+	public void texttoField() throws GmailException
 	
 	{
 		Helper.enterText(toField, "praveen.lellela@kore.com");
 	}
 	
-    public void textSubject()
+    public void textSubject() throws GmailException
 	
 	{
 		Helper.enterText(subject, "This is the subject");
 	}
-	public void textmessagebody()
+	public void textmessagebody() throws GmailException
 	
 	{
 		Helper.enterText(messageBody, "Hey guys...how r u???");
 	}
 	
-	public void clicksendButton()
+	public void clicksendButton() throws GmailException
 	{
 		Helper.click(sendButton);
 	}

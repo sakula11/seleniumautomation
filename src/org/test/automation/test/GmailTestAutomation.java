@@ -2,6 +2,7 @@ package org.test.automation.test;
 
 import org.openqa.selenium.By;
 import org.test.automation.base.BrowserManager;
+import org.test.automation.exception.GmailException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class GmailTestAutomation extends BrowserManager
 	private GmailComposeAutomation compose = new GmailComposeAutomation();
 	
 	@Test
-	public void testGmailLogin() throws InterruptedException
+	public void testGmailLogin() throws InterruptedException, GmailException
 	{
 		_Driver.get("https://mail.google.com");
 		

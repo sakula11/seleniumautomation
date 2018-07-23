@@ -3,6 +3,7 @@ package org.test.automation.test;
 import org.openqa.selenium.By;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.base.Helper;
+import org.test.automation.exception.GmailException;
 
 public class GmailCompose extends BrowserManager{
 		
@@ -19,51 +20,51 @@ public class GmailCompose extends BrowserManager{
 	By successMessage = By.id("link_vsm");
 	
 	
-	public void clickComposeButton() {
+	public void clickComposeButton() throws GmailException {
 		
 		Helper.click(composeButton);
 		
 	}
 	
-   public void selectToField() {
+   public void selectToField() throws GmailException {
 		
 		Helper.click(toFieldTextBox);
 		
 	}
 	
-	public void enterTextToField() {
+	public void enterTextToField() throws GmailException {
 		Helper.enterText(toFieldTextBox, "aakula.sudhakar@gmail.com");
 	}
 	
-	 public void selectsubjectField() {
+	 public void selectsubjectField() throws GmailException {
 			
 			Helper.click(subjectTextBox);
 			
 		}
 
-	 public void enterTextsubjectField() {
+	 public void enterTextsubjectField() throws GmailException {
 			Helper.enterText(subjectTextBox, "hi");
 		}
 	 
 	 
-	 public void selectmailBody() {
+	 public void selectmailBody() throws GmailException {
 			
 			Helper.click(mailBody);
 			
 		}
 
-	 public void enterTextmailBody() {
+	 public void enterTextmailBody() throws GmailException {
 			Helper.enterText(mailBody, "hi");
 		}
 	 
 	 
 	 
-	 public void clickSend() {
+	 public void clickSend() throws GmailException {
 		 Helper.click(sendButton);
 	 }
 	 
 	 
-	 public boolean verifySuccessMessage()
+	 public boolean verifySuccessMessage() throws GmailException
 	 {
 		 return Helper.isElementDisplayed(successMessage);
 	 }
