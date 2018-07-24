@@ -16,6 +16,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.test.automation.exception.GmailException;
 import org.test.automation.utils.DateUtils;
 import org.test.automation.utils.PropertyReader;
@@ -88,7 +90,7 @@ public class BrowserManager {
 		PropertyConfigurator.configure("log4j.properties");
 		startTime = DateUtils.DateTime();
 		log.info("Execution Started at " + startTime);
-		startBrowser("CHROME");
+		startBrowser("FIREFOX");
 		navigateToURL(baseURL);
 
 	}
@@ -109,6 +111,12 @@ public class BrowserManager {
 			_Driver.manage().window().maximize();
 			break;
 		case "FIREFOX":
+			killProcess("FIREFOX");
+			System.setProperty("webdriver.gecko.driver", CURRENTDIR + "\\ExecutableDrivers\\geckodriver.exe");
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setBrowserName("firefox");
+			capabilities.setCapability("acceptInsecureCerts", true);
+			_Driver = new FirefoxDriver(capabilities);
 			break;
 		default:
 			throw new GmailException("Invalid browserName");
