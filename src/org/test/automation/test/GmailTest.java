@@ -3,7 +3,9 @@ package org.test.automation.test;
 import org.openqa.selenium.By;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.exception.GmailException;
+import org.test.automation.utils.ExcelUtils;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class GmailTest extends BrowserManager {
@@ -12,7 +14,7 @@ public class GmailTest extends BrowserManager {
 
 	private GmailComposePage gmailCompose = new GmailComposePage();
 
-	@Test
+	@Test()
 	public void testGmailLogin() throws InterruptedException, GmailException {
 
 		try {
@@ -36,6 +38,16 @@ public class GmailTest extends BrowserManager {
 		gmailCompose.clickSendButton();
 
 		Assert.assertTrue(gmailCompose.verifySuccessMessage());
+
+	}
+
+
+	@DataProvider
+	public Object[][] Authentication() throws Exception {
+
+		Object[][] testObjArray = ExcelUtils.getTableArray(CURRENTDIR + "//Files//Credentials.xls", "Sheet1");
+
+		return (testObjArray);
 
 	}
 

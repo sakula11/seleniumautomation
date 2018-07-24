@@ -17,5 +17,14 @@
 	<classpathentry exported="true" kind="lib" path="Libs/okio-1.14.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="Libs/testng-6.11.jar"/>
 	<classpathentry exported="true" kind="lib" path="Libs/log4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-3.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-3.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-examples-3.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-excelant-3.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-ooxml-3.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-ooxml-3.5-beta5.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/poi-scratchpad-3.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/org.apache.commons.io.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -7,7 +7,7 @@ import org.test.automation.exception.GmailException;
 
 public class GmailLoginPage extends BrowserManager {
 
-	By usernameTextField = By.id("identifierId");
+	By usernameTextField = By.id("identifierId1");
 
 	By nextButton = By.xpath("//span[text()='Next']");
 

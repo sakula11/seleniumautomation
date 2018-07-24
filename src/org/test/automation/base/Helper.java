@@ -23,7 +23,7 @@ public class Helper extends BrowserManager {
 	{
 		WebElement element = null;
 		
-		WebDriverWait wait = new WebDriverWait(_Driver, 15);
+		WebDriverWait wait = new WebDriverWait(_Driver, 5);
 		try
 		{
 				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
@@ -110,5 +110,7 @@ public class Helper extends BrowserManager {
 			browserResponse();
 		}
 	}
+	
+	
 
 }
