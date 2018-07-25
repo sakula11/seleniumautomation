@@ -26,5 +26,7 @@
 	<classpathentry exported="true" kind="lib" path="Libs/poi-ooxml-schemas-3.17.jar"/>
 	<classpathentry exported="true" kind="lib" path="Libs/poi-scratchpad-3.17.jar"/>
 	<classpathentry exported="true" kind="lib" path="Libs/org.apache.commons.io.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libs/mailapi.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

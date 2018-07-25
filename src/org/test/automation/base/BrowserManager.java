@@ -21,11 +21,13 @@ import org.test.automation.exception.GmailException;
 import org.test.automation.utils.DateUtils;
 import org.test.automation.utils.PropertyReader;
 import org.test.automation.utils.ReportGenerator;
+import org.test.automation.utils.SendEmail;
 import org.test.automation.utils.TimeUtils;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 
 public class BrowserManager {
@@ -268,6 +270,15 @@ public class BrowserManager {
 			System.out.println(System.getProperty("user.dir") + "\\testng-failed.xml does not exist");
 		}
 
+	}
+	
+	@AfterClass
+	public void stop() throws FileNotFoundException, GmailException {
+
+		if (PropertyReader.getProperty("sendEmail").equals("true")) {
+			SendEmail.sendTestReports("Test Execution Results:" + DateUtils.DateTime(), PropertyReader.getProperty("ToField"),
+					PropertyReader.getProperty("CCField"), PropertyReader.getProperty("BCCField"));
+		}
 	}
 
 	public void killProcess(String browserName) throws GmailException {

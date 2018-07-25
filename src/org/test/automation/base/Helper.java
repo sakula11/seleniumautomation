@@ -54,6 +54,11 @@ public class Helper extends BrowserManager {
 		return getelement(locator).isDisplayed();
 	}
 	
+	public static String getCSSValue(By locator,String attribute) throws GmailException
+	{
+		return getelement(locator).getCssValue(attribute);
+	}
+	
 	public static ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
 		@Override
 		public Boolean apply(WebDriver driver) {
