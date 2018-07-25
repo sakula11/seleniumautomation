@@ -41,7 +41,6 @@ public class GmailTest extends BrowserManager {
 
 	}
 
-
 	@DataProvider
 	public Object[][] Authentication() throws Exception {
 

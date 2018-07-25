@@ -108,19 +108,20 @@ public class BrowserManager {
 			killProcess("CHROME");
 			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "\\ExecutableDrivers\\chromedriver.exe");
 			_Driver = new ChromeDriver();
-			_Driver.manage().window().maximize();
+
 			break;
 		case "FIREFOX":
 			killProcess("FIREFOX");
 			System.setProperty("webdriver.gecko.driver", CURRENTDIR + "\\ExecutableDrivers\\geckodriver.exe");
-			DesiredCapabilities capabilities = new DesiredCapabilities();
+			/*DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setBrowserName("firefox");
-			capabilities.setCapability("acceptInsecureCerts", true);
-			_Driver = new FirefoxDriver(capabilities);
+			capabilities.setCapability("acceptInsecureCerts", true);*/
+			_Driver = new FirefoxDriver();
 			break;
 		default:
 			throw new GmailException("Invalid browserName");
 		}
+		_Driver.manage().window().maximize();
 		return _Driver;
 
 	}
@@ -304,9 +305,9 @@ public class BrowserManager {
 		}
 		fileName = "Report_Snapshot_" + getRandomValue() + ".png";
 		String path = "";
-			path = System.getProperty("user.dir") + "\\Snapshots\\" + fileName;
-			if (new File(path).exists()) {
-				new File(path).mkdirs();
+		path = System.getProperty("user.dir") + "\\Snapshots\\" + fileName;
+		if (new File(path).exists()) {
+			new File(path).mkdirs();
 		}
 		// log.info("fileName: " + fileName);
 		try {
