@@ -17,7 +17,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.test.automation.exception.GmailException;
 import org.test.automation.utils.DateUtils;
 import org.test.automation.utils.PropertyReader;
@@ -35,7 +34,6 @@ public class BrowserManager {
 	protected static String CURRENTDIR = System.getProperty("user.dir");
 	public static Logger log = Logger.getLogger(BrowserManager.class);
 	protected static Properties props;
-	public static String baseURL = "https://mail.google.com";
 	private static String MODULENAME = "";
 
 	protected static final String TCPASSED = "PASSED";
@@ -46,6 +44,7 @@ public class BrowserManager {
 	private static String endTime = "";
 
 	private static String chartName = "";
+	private static String baseURL = "";
 
 	protected static final String DATE_FORMAT_NOW = "dd-MM-yyyy-hh-mm-ss";
 	protected static SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
@@ -90,8 +89,8 @@ public class BrowserManager {
 		PropertyConfigurator.configure("log4j.properties");
 		startTime = DateUtils.DateTime();
 		log.info("Execution Started at " + startTime);
-		startBrowser("FIREFOX");
-		navigateToURL(baseURL);
+		startBrowser(PropertyReader.getProperty("browser"));
+		navigateToURL(PropertyReader.getProperty("baseURL"));
 
 	}
 
@@ -105,13 +104,13 @@ public class BrowserManager {
 
 		switch (browserName) {
 		case "CHROME":
-			killProcess("CHROME");
+//			killProcess("CHROME");
 			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "\\ExecutableDrivers\\chromedriver.exe");
 			_Driver = new ChromeDriver();
 
 			break;
 		case "FIREFOX":
-			killProcess("FIREFOX");
+//			killProcess("FIREFOX");
 			System.setProperty("webdriver.gecko.driver", CURRENTDIR + "\\ExecutableDrivers\\geckodriver.exe");
 			/*DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setBrowserName("firefox");

@@ -1,5 +1,7 @@
 package org.test.automation.test;
 
+import java.io.FileNotFoundException;
+
 import org.openqa.selenium.By;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.exception.GmailException;
@@ -15,7 +17,7 @@ public class GmailTest extends BrowserManager {
 	private GmailComposePage gmailCompose = new GmailComposePage();
 
 	@Test()
-	public void testGmailLogin() throws InterruptedException, GmailException {
+	public void testGmailLogin() throws InterruptedException, GmailException, FileNotFoundException {
 
 		try {
 
@@ -31,6 +33,12 @@ public class GmailTest extends BrowserManager {
 
 		Assert.assertTrue(login.verifyComposeButtonIsDisplayed());
 
+	}
+
+	@Test()
+	public void testGmailCompose() throws InterruptedException, GmailException, FileNotFoundException {
+
+		testGmailLogin();
 		gmailCompose.clickComposeButton();
 		gmailCompose.enterEmailIDsInToField();
 		gmailCompose.enterSubject();
