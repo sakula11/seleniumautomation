@@ -19,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.test.automation.exception.GmailException;
 import org.test.automation.utils.DateUtils;
+import org.test.automation.utils.FileUtility;
 import org.test.automation.utils.PropertyReader;
 import org.test.automation.utils.ReportGenerator;
 import org.test.automation.utils.SendEmail;
@@ -28,6 +29,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 public class BrowserManager {
@@ -75,8 +77,8 @@ public class BrowserManager {
 	private int totalskippedCount;
 	private int grandTotalCount;
 
-	@BeforeMethod
-	public void setup() throws Exception {
+	@BeforeClass
+	public void init() {
 		File logsFolder = new File(CURRENTDIR + "//logs");
 		File reportsDir = new File(CURRENTDIR + "/Snapshots");
 
@@ -90,7 +92,13 @@ public class BrowserManager {
 
 		PropertyConfigurator.configure("log4j.properties");
 		startTime = DateUtils.DateTime();
+		startTimeList.add(startTime);
 		log.info("Execution Started at " + startTime);
+	}
+
+	@BeforeMethod
+	public void setup() throws Exception {
+
 		startBrowser(PropertyReader.getProperty("browser"));
 		navigateToURL(PropertyReader.getProperty("baseURL"));
 
@@ -106,17 +114,19 @@ public class BrowserManager {
 
 		switch (browserName) {
 		case "CHROME":
-//			killProcess("CHROME");
+			// killProcess("CHROME");
 			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "\\ExecutableDrivers\\chromedriver.exe");
 			_Driver = new ChromeDriver();
 
 			break;
 		case "FIREFOX":
-//			killProcess("FIREFOX");
+			// killProcess("FIREFOX");
 			System.setProperty("webdriver.gecko.driver", CURRENTDIR + "\\ExecutableDrivers\\geckodriver.exe");
-			/*DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setBrowserName("firefox");
-			capabilities.setCapability("acceptInsecureCerts", true);*/
+			/*
+			 * DesiredCapabilities capabilities = new DesiredCapabilities();
+			 * capabilities.setBrowserName("firefox");
+			 * capabilities.setCapability("acceptInsecureCerts", true);
+			 */
 			_Driver = new FirefoxDriver();
 			break;
 		default:
@@ -271,14 +281,19 @@ public class BrowserManager {
 		}
 
 	}
-	
-	@AfterClass
-	public void stop() throws FileNotFoundException, GmailException {
+
+	@AfterSuite
+	public void stop() throws GmailException, IOException {
 
 		if (PropertyReader.getProperty("sendEmail").equals("true")) {
-			SendEmail.sendTestReports("Test Execution Results:" + DateUtils.DateTime(), PropertyReader.getProperty("ToField"),
-					PropertyReader.getProperty("CCField"), PropertyReader.getProperty("BCCField"));
+			SendEmail.sendTestReports("Test Execution Results:" + DateUtils.DateTime(),
+					PropertyReader.getProperty("ToField"), PropertyReader.getProperty("CCField"),
+					PropertyReader.getProperty("BCCField"));
 		}
+		
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
 	}
 
 	public void killProcess(String browserName) throws GmailException {
@@ -321,7 +336,7 @@ public class BrowserManager {
 		}
 		// log.info("fileName: " + fileName);
 		try {
-			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\Snapshots\\" + fileName));
+			FileUtility.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\Snapshots\\" + fileName));
 		} catch (IOException e) {
 
 			e.printStackTrace();

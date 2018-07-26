@@ -351,6 +351,22 @@ public class ReportGenerator extends BrowserManager {
 		sb.append(reportPath);
 		sb.append("</td>");
 		sb.append("</tr>");
+		
+		sb.append("<tr>");
+		sb.append("<td>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<b>");
+		sb.append("Thanks & Regards,\n\n");
+		sb.append("<br>");
+		sb.append("QA Team");
+		sb.append("</b>");
+		sb.append("</td>");
+		sb.append("</tr>");
 
 		sb.append("</table>");
 

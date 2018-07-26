@@ -1,4 +1,4 @@
-package org.test.automation.test;
+package org.test.automation.testcases;
 
 import java.io.FileNotFoundException;
 

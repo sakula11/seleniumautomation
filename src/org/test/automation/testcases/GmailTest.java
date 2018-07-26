@@ -1,4 +1,4 @@
-package org.test.automation.test;
+package org.test.automation.testcases;
 
 import java.io.FileNotFoundException;
 
@@ -17,7 +17,7 @@ public class GmailTest extends BrowserManager {
 	private GmailComposePage gmailCompose = new GmailComposePage();
 
 	@Test()
-	public void testGmailLogin() throws InterruptedException, GmailException, FileNotFoundException {
+	public void TC_testGmailLogin() throws InterruptedException, GmailException, FileNotFoundException {
 
 		try {
 
@@ -36,9 +36,9 @@ public class GmailTest extends BrowserManager {
 	}
 
 	@Test()
-	public void testGmailCompose() throws InterruptedException, GmailException, FileNotFoundException {
+	public void TC_testGmailCompose() throws InterruptedException, GmailException, FileNotFoundException {
 
-		testGmailLogin();
+		TC_testGmailLogin();
 		gmailCompose.clickComposeButton();
 		gmailCompose.enterEmailIDsInToField();
 		gmailCompose.enterSubject();
