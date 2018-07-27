@@ -5,13 +5,12 @@ import java.io.FileNotFoundException;
 import org.openqa.selenium.By;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.exception.GmailException;
-import org.test.automation.utils.ExcelUtils;
+import org.test.automation.utils.PropertyReader;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class GmailTest extends BrowserManager {
-
+	
 	private GmailLoginPage login = new GmailLoginPage();
 
 	private GmailComposePage gmailCompose = new GmailComposePage();
@@ -26,9 +25,9 @@ public class GmailTest extends BrowserManager {
 
 		}
 
-		login.enterGmailUserName();
+		login.enterGmailUserName(PropertyReader.getProperty("gmailUserName"));
 		login.clickNextButton();
-		login.enterGmailPassword();
+		login.enterGmailPassword(PropertyReader.getProperty("gmailPassword"));
 		login.clickNextButton();
 
 		Assert.assertTrue(login.verifyComposeButtonIsDisplayed());
@@ -46,15 +45,6 @@ public class GmailTest extends BrowserManager {
 		gmailCompose.clickSendButton();
 
 		Assert.assertTrue(gmailCompose.verifySuccessMessage());
-
-	}
-
-	@DataProvider
-	public Object[][] Authentication() throws Exception {
-
-		Object[][] testObjArray = ExcelUtils.getTableArray(CURRENTDIR + "//Files//Credentials.xls", "Sheet1");
-
-		return (testObjArray);
 
 	}
 

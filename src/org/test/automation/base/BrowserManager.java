@@ -66,6 +66,8 @@ public class BrowserManager {
 	private static ArrayList<String> snapShotList = new ArrayList<String>();
 	private static ArrayList<String> tcNameList = new ArrayList<>();
 	private static ArrayList<String> exeStatusList = new ArrayList<>();
+	
+	private static final String testDataFileName = "TestData.xlsx";
 
 	private int passedCount1;
 	private int failedCount1;
@@ -293,7 +295,7 @@ public class BrowserManager {
 		
 		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
 		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\test-output");
 	}
 
 	public void killProcess(String browserName) throws GmailException {
@@ -374,5 +376,4 @@ public class BrowserManager {
 		}
 		return sb.toString().toUpperCase();
 	}
-
 }

@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.base.Helper;
 import org.test.automation.exception.GmailException;
-import org.test.automation.utils.PropertyReader;
 
 public class GmailLoginPage extends BrowserManager {
 
@@ -18,9 +17,9 @@ public class GmailLoginPage extends BrowserManager {
 	
 	By gmailComposeButton = By.xpath("//*[text()='COMPOSE']");
 
-	public void enterGmailUserName() throws GmailException, FileNotFoundException {
+	public void enterGmailUserName(String sUsername) throws GmailException, FileNotFoundException {
 		log.info("Enter username");
-		Helper.enterText(usernameTextField, PropertyReader.getProperty("gmailUserName"));
+		Helper.enterText(usernameTextField, sUsername);
 	}
 
 	public void clickNextButton() throws GmailException {
@@ -28,9 +27,9 @@ public class GmailLoginPage extends BrowserManager {
 		Helper.click(nextButton);
 	}
 
-	public void enterGmailPassword() throws GmailException, FileNotFoundException {
+	public void enterGmailPassword(String sPassword) throws GmailException, FileNotFoundException {
 		log.info("Enter password");
-		Helper.enterText(passwordTextField, PropertyReader.getProperty("gmailPassword"));
+		Helper.enterText(passwordTextField, sPassword);
 	}
 	
 	public boolean verifyComposeButtonIsDisplayed() throws GmailException
@@ -38,4 +37,5 @@ public class GmailLoginPage extends BrowserManager {
 		log.info("Check whether Gmail Compose button is displayed");
 		return Helper.isElementDisplayed(gmailComposeButton);
 	}
+
 }
