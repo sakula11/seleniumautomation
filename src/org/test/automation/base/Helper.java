@@ -26,8 +26,9 @@ public class Helper extends BrowserManager {
 		WebDriverWait wait = new WebDriverWait(_Driver, 5);
 		try
 		{
-				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-				element = _Driver.findElement(locator);
+//			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			element = _Driver.findElement(locator);
 		}
 		catch(TimeoutException toe)
 		{
@@ -115,6 +116,7 @@ public class Helper extends BrowserManager {
 			browserResponse();
 		}
 	}
+	
 	
 	
 

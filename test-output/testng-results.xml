@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="52307" started-at="2018-07-27T10:08:37Z" finished-at="2018-07-27T10:09:30Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="52307" started-at="2018-07-27T10:08:37Z" finished-at="2018-07-27T10:09:30Z">
+      <class name="org.test.automation.testcases.GmailTest">
+        <test-method status="PASS" signature="init()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="init" is-config="true" duration-ms="54" started-at="2018-07-27T15:38:37Z" finished-at="2018-07-27T15:38:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="setup" is-config="true" duration-ms="12478" started-at="2018-07-27T15:38:37Z" finished-at="2018-07-27T15:38:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_testGmailCompose()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="TC_testGmailCompose" duration-ms="17394" started-at="2018-07-27T15:38:50Z" finished-at="2018-07-27T15:39:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_testGmailCompose -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, org.testng.ITestContext)[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="tearDown" is-config="true" duration-ms="1638" started-at="2018-07-27T15:39:07Z" finished-at="2018-07-27T15:39:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_testGmailCompose status=SUCCESS method=GmailTest.TC_testGmailCompose()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@7164ca4c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="setup" is-config="true" duration-ms="9256" started-at="2018-07-27T15:39:09Z" finished-at="2018-07-27T15:39:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_testGmailLogin()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="TC_testGmailLogin" duration-ms="10059" started-at="2018-07-27T15:39:18Z" finished-at="2018-07-27T15:39:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_testGmailLogin -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, org.testng.ITestContext)[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="tearDown" is-config="true" duration-ms="1362" started-at="2018-07-27T15:39:28Z" finished-at="2018-07-27T15:39:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_testGmailLogin status=SUCCESS method=GmailTest.TC_testGmailLogin()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@7164ca4c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="prepareTestReport(org.testng.ITestContext)[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="prepareTestReport" is-config="true" duration-ms="53" started-at="2018-07-27T15:39:30Z" finished-at="2018-07-27T15:39:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@7164ca4c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- prepareTestReport -->
+        <test-method status="PASS" signature="stop()[pri:0, instance:org.test.automation.testcases.GmailTest@68c4039c]" name="stop" is-config="true" duration-ms="7718" started-at="2018-07-27T15:39:30Z" finished-at="2018-07-27T15:39:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stop -->
+      </class> <!-- org.test.automation.testcases.GmailTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
