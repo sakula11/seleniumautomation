@@ -2,6 +2,7 @@ package org.test.automation.base;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,7 +27,6 @@ public class Helper extends BrowserManager {
 		WebDriverWait wait = new WebDriverWait(_Driver, 5);
 		try
 		{
-//			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 			element = _Driver.findElement(locator);
 		}
@@ -36,6 +36,25 @@ public class Helper extends BrowserManager {
 		}
 		
 		return element;
+		
+	}
+	
+	public static List<WebElement> getelements(By locator) throws GmailException
+	{
+		List<WebElement> elements = null;
+		
+		WebDriverWait wait = new WebDriverWait(_Driver, 5);
+		try
+		{
+			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			elements = _Driver.findElements(locator);
+		}
+		catch(TimeoutException toe)
+		{
+			throw new GmailException("Locator not available: "+locator);
+		}
+		
+		return elements;
 		
 	}
 	
@@ -115,6 +134,12 @@ public class Helper extends BrowserManager {
 			// System.out.println("wait for page to load exception");
 			browserResponse();
 		}
+	}
+	
+	public static void navigateBack()
+	{
+		_Driver.navigate().back();
+		waitForPageLoaded();
 	}
 	
 	

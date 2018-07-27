@@ -106,9 +106,10 @@ public class BrowserManager {
 
 	}
 
-	private void navigateToURL(String url) {
+	protected static void navigateToURL(String url) {
 
 		_Driver.get(url);
+		Helper.waitForPageLoaded();
 
 	}
 
@@ -375,5 +376,12 @@ public class BrowserManager {
 			}
 		}
 		return sb.toString().toUpperCase();
+	}
+	
+	public static void main(String args[]) throws Exception
+	{
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\test-output");
 	}
 }

@@ -84,7 +84,7 @@ public class GenerateTestNGTestSuite {
 	
 	public static void main(String args[]) throws ClassNotFoundException, GmailException, IOException
 	{
-		generateTestSuite("org.test.automation.testcases.GmailTest","Gmail Automation","Gmail Test");
+		generateTestSuite("org.test.automation.testcases.AutomateTestSite","TestSite Suite","AutomateTestSite Testcase");
 	}
 
 
