@@ -60,7 +60,7 @@ public class SendEmail extends BrowserManager {
 
 			Transport.send(message);
 
-			System.out.println("Done");
+			System.out.println("Done. Sent Email");
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);

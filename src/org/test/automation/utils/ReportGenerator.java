@@ -435,17 +435,17 @@ public class ReportGenerator extends BrowserManager {
 
 			if (_Status.equals(TCPASSED)) {
 				sb.append(
-						"<td style = \"border:solid 1px; background: #FFFFFF; color: green; font-weight: bold;text-align: center;width:15%\">");
+						"<td style = \"border:solid 1px; background: #FFFFFF; color: green; font-weight: bold;text-align: left;width:15%\">");
 				sb.append(_Status);
 				sb.append("</td>");
 			} else if (_Status.equals(TCFAILED)) {
 				sb.append(
-						"<td style = \"border:solid 1px; background: #FFFFFF; color: #ff0000; font-weight: bold;text-align: center;width:15%\">");
+						"<td style = \"border:solid 1px; background: #FFFFFF; color: #ff0000; font-weight: bold;text-align: left;width:15%\">");
 				sb.append(_Status);
 				sb.append("</td>");
 			} else if (_Status.equals(TCSKIPPED)) {
 				sb.append(
-						"<td style = \"border:solid 1px; background: #FFFFFF; color: #ff8c00; font-weight: bold;text-align: center;width:15%\">");
+						"<td style = \"border:solid 1px; background: #FFFFFF; color: #ff8c00; font-weight: bold;text-align: left;width:15%\">");
 				sb.append(_Status);
 				sb.append("</td>");
 			}

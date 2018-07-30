@@ -20,5 +20,12 @@ public class FileUtility {
 		System.out.println("Done. file copied: "+srcFile);
 	}
 	
+	public static void deleteFolder(String folderName) throws IOException
+	{
+		File file = new File(folderName);
+		FileUtils.deleteDirectory(file);
+		System.out.println("Done. folder deleted: "+folderName);
+	}
+	
 
 }

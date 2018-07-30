@@ -24,7 +24,7 @@ public class Helper extends BrowserManager {
 	{
 		WebElement element = null;
 		
-		WebDriverWait wait = new WebDriverWait(_Driver, 5);
+		WebDriverWait wait = new WebDriverWait(_Driver, 15);
 		try
 		{
 			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));

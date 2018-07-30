@@ -80,7 +80,11 @@ public class BrowserManager {
 	private int grandTotalCount;
 
 	@BeforeClass
-	public void init() {
+	public void init() throws IOException {
+		
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
+		
 		File logsFolder = new File(CURRENTDIR + "//logs");
 		File reportsDir = new File(CURRENTDIR + "/Snapshots");
 
@@ -296,7 +300,7 @@ public class BrowserManager {
 		
 		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
 		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\test-output");
+		FileUtility.deleteFolder(System.getProperty("user.dir")+"\\test-output");
 	}
 
 	public void killProcess(String browserName) throws GmailException {
@@ -382,6 +386,6 @@ public class BrowserManager {
 	{
 		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
 		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\test-output");
+		FileUtility.deleteFolder(System.getProperty("user.dir")+"\\test-output");
 	}
 }
