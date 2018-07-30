@@ -2,6 +2,9 @@ package org.test.automation.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -11,9 +14,14 @@ import java.util.Iterator;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.exception.GmailException;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
+
 public class ReportGenerator extends BrowserManager {
 
-	public static void writeToHTML(String url, ArrayList<String> _Modules, ArrayList<String> tCList,
+	public static void writeToHTML(String browserName,String url, ArrayList<String> _Modules, ArrayList<String> tCList,
 			ArrayList<Integer> totalList2, ArrayList<Integer> passedList2, ArrayList<Integer> failedList2,
 			ArrayList<Integer> skippedList2, int pc, int fc, int sc, int total, ArrayList<String> totalTimeList2,
 			String reportPath, ArrayList<String> exceptionList, ArrayList<String> snapShotList2, String totalTimeTaken,
@@ -55,9 +63,25 @@ public class ReportGenerator extends BrowserManager {
 		sb.append("<br>");
 		sb.append("</td>");
 		sb.append("</tr>");
+		
 		sb.append("<tr>");
 		sb.append("<td>");
-		sb.append("Environment");
+		sb.append("Browser");
+		sb.append("<b>");
+
+		sb.append(" : " + browserName);
+		sb.append("</b>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("</td>");
+		sb.append("</tr>");
+		
+		sb.append("<br>");
+		sb.append("<br>");
+		
+		sb.append("<tr>");
+		sb.append("<td>");
+		sb.append("URL");
 		sb.append("<b>");
 
 		sb.append(" : " + url);
@@ -78,27 +102,7 @@ public class ReportGenerator extends BrowserManager {
 		sb.append("</td>");
 		sb.append("</tr>");
 		
-		sb.append("<tr>");
-		sb.append("<td>");
-		sb.append("OS Architecture");
-		sb.append("<b>");
-
-		sb.append(" : " + System.getProperty("os.arch"));
-		sb.append("</b>");
-		sb.append("<br>");
-		sb.append("<br>");
-		sb.append("</td>");
-		sb.append("</tr>");
 		
-		sb.append("<tr>");
-		sb.append("<td>");
-		sb.append("Java Version");
-		sb.append("<b>");
-
-		sb.append(" : " + System.getProperty("java.version"));
-		sb.append("</b>");
-		sb.append("</td>");
-		sb.append("</tr>");
 		sb.append("<br>");
 		sb.append("<br>");
 		sb.append("<br>");
@@ -469,6 +473,7 @@ public class ReportGenerator extends BrowserManager {
 		bw.close();
 		return sb.toString();
 	}
+	
 
 
 }

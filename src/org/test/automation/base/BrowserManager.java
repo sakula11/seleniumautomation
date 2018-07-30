@@ -17,6 +17,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.test.automation.constants.BrowserTYPE;
 import org.test.automation.exception.GmailException;
 import org.test.automation.utils.DateUtils;
 import org.test.automation.utils.FileUtility;
@@ -262,7 +265,7 @@ public class BrowserManager {
 		String reportPath = "";
 		reportPath = "<img src=\"" + System.getProperty("user.dir") + "\\Snapshots\\" + chartName + "\">";
 
-		ReportGenerator.writeToHTML(baseURL, modulesList, TCList, totalList, passedList, failedList, skippedList,
+		ReportGenerator.writeToHTML(getBrowserType(),baseURL, modulesList, TCList, totalList, passedList, failedList, skippedList,
 				totalpassedCount, totalfailedCount, totalskippedCount, grandTotalCount, totalTimeList, reportPath,
 				exceptionList, snapShotList, totalTimeTaken, TimeUtils.getMessageBasedonTime(), tcDetails);
 
@@ -378,6 +381,22 @@ public class BrowserManager {
 		}
 		return sb.toString().toUpperCase();
 	}
+	
+	public static String getBrowserType() {
+		String browserType = "";
+		if (_Driver instanceof ChromeDriver) {
+			browserType = BrowserTYPE.CHROME.toString();
+		} else if (_Driver instanceof InternetExplorerDriver) {
+			browserType = BrowserTYPE.INTERNETEXPLORER.toString();
+		} else if (_Driver instanceof FirefoxDriver) {
+			browserType = BrowserTYPE.FIREFOX.toString();
+		} else if (_Driver instanceof SafariDriver) {
+			browserType = BrowserTYPE.SAFARI.toString();
+		}
+		System.out.println(browserType);
+		return browserType;
+	}
+
 	
 	public static void main(String args[]) throws Exception
 	{
