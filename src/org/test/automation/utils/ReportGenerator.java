@@ -425,7 +425,8 @@ public class ReportGenerator extends BrowserManager {
 			sb.append(moduleName);
 			sb.append("</td>");
 			sb.append(
-					"<td style = \"border:solid 1px; background: #FFFFFF; color: #000; font-weight: bold;text-align: center;width:15%\">");
+					"<td style = \"border:solid 1px; background: #FFFFFF; color: #000; font-weight: bold;text-align: left;width:15%\">");
+			sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
 			sb.append(tc.next());
 			sb.append("</td>");
 

@@ -67,7 +67,6 @@ public class BrowserManager {
 	private static ArrayList<String> tcNameList = new ArrayList<>();
 	private static ArrayList<String> exeStatusList = new ArrayList<>();
 	
-	private static final String testDataFileName = "TestData.xlsx";
 
 	private int passedCount1;
 	private int failedCount1;
@@ -82,8 +81,6 @@ public class BrowserManager {
 	@BeforeClass
 	public void init() throws IOException {
 		
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
 		
 		File logsFolder = new File(CURRENTDIR + "//logs");
 		File reportsDir = new File(CURRENTDIR + "/Snapshots");

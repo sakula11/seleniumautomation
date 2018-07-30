@@ -22,9 +22,11 @@ public class AutomateTestSite extends BrowserManager{
 		
 	}
 	
-	@Test(dependsOnMethods= {"TC_testFileUpload"})
+	@Test()
 	public void TC_testCheckboxes() throws GmailException
 	{
+		navigateToURL("http://the-internet.herokuapp.com");
+		
 		page.clickCheckBoxesLink();
 		
 		Assert.assertTrue(page.VerifyCheckBoxSelected());
