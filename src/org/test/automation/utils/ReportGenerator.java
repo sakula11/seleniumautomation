@@ -2,9 +2,6 @@ package org.test.automation.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -14,10 +11,6 @@ import java.util.Iterator;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.exception.GmailException;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 public class ReportGenerator extends BrowserManager {
 
@@ -393,8 +386,6 @@ public class ReportGenerator extends BrowserManager {
 	public static String TCwriteToHTML(String moduleName, ArrayList<String> tcNameList,
 			ArrayList<String> executionStatusList) throws GmailException, IOException {
 
-		int tcNameListSize = tcNameList.size();
-		int executionStatusListSize = executionStatusList.size();
 		StringBuilder sb = new StringBuilder();
 
 		Iterator<String> tc = tcNameList.iterator();
