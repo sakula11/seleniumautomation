@@ -18,6 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.test.automation.constants.BrowserTYPE;
 import org.test.automation.exception.GmailException;
@@ -34,6 +35,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 public class BrowserManager {
 
@@ -69,7 +72,6 @@ public class BrowserManager {
 	private static ArrayList<String> snapShotList = new ArrayList<String>();
 	private static ArrayList<String> tcNameList = new ArrayList<>();
 	private static ArrayList<String> exeStatusList = new ArrayList<>();
-	
 
 	private int passedCount1;
 	private int failedCount1;
@@ -83,8 +85,7 @@ public class BrowserManager {
 
 	@BeforeClass
 	public void init() throws IOException {
-		
-		
+
 		File logsFolder = new File(CURRENTDIR + "//logs");
 		File reportsDir = new File(CURRENTDIR + "/Snapshots");
 
@@ -102,10 +103,11 @@ public class BrowserManager {
 		log.info("Execution Started at " + startTime);
 	}
 
+	@Parameters("browser")
 	@BeforeMethod
-	public void setup() throws Exception {
+	public void setup(@Optional("CHROME") String browserName) throws Exception {
 
-		startBrowser(PropertyReader.getProperty("browser"));
+		startBrowser("FIREFOX");
 		navigateToURL(PropertyReader.getProperty("baseURL"));
 
 	}
@@ -123,17 +125,18 @@ public class BrowserManager {
 		case "CHROME":
 			// killProcess("CHROME");
 			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "\\ExecutableDrivers\\chromedriver.exe");
+			log.info("Launching Chrome Browser...");
 			_Driver = new ChromeDriver();
 
 			break;
 		case "FIREFOX":
 			// killProcess("FIREFOX");
 			System.setProperty("webdriver.gecko.driver", CURRENTDIR + "\\ExecutableDrivers\\geckodriver.exe");
-			/*
-			 * DesiredCapabilities capabilities = new DesiredCapabilities();
-			 * capabilities.setBrowserName("firefox");
-			 * capabilities.setCapability("acceptInsecureCerts", true);
-			 */
+
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setBrowserName("firefox");
+			capabilities.setCapability("acceptInsecureCerts", true);
+			log.info("Launching Firefox Browser...");
 			_Driver = new FirefoxDriver();
 			break;
 		default:
@@ -265,9 +268,9 @@ public class BrowserManager {
 		String reportPath = "";
 		reportPath = "<img src=\"" + System.getProperty("user.dir") + "\\Snapshots\\" + chartName + "\">";
 
-		ReportGenerator.writeToHTML(getBrowserType(),baseURL, modulesList, TCList, totalList, passedList, failedList, skippedList,
-				totalpassedCount, totalfailedCount, totalskippedCount, grandTotalCount, totalTimeList, reportPath,
-				exceptionList, snapShotList, totalTimeTaken, TimeUtils.getMessageBasedonTime(), tcDetails);
+		ReportGenerator.writeToHTML(getBrowserType(), baseURL, modulesList, TCList, totalList, passedList, failedList,
+				skippedList, totalpassedCount, totalfailedCount, totalskippedCount, grandTotalCount, totalTimeList,
+				reportPath, exceptionList, snapShotList, totalTimeTaken, TimeUtils.getMessageBasedonTime(), tcDetails);
 
 		String destpath = "";
 		destpath = System.getProperty("user.dir") + "\\TestAutomationReports\\" + DateUtils.DateTime();
@@ -297,10 +300,10 @@ public class BrowserManager {
 					PropertyReader.getProperty("ToField"), PropertyReader.getProperty("CCField"),
 					PropertyReader.getProperty("BCCField"));
 		}
-		
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
-		FileUtility.deleteFolder(System.getProperty("user.dir")+"\\test-output");
+
+		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\TestAutomationReports");
+		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\SnapShots");
+		FileUtility.deleteFolder(System.getProperty("user.dir") + "\\test-output");
 	}
 
 	public void killProcess(String browserName) throws GmailException {
@@ -381,7 +384,7 @@ public class BrowserManager {
 		}
 		return sb.toString().toUpperCase();
 	}
-	
+
 	public static String getBrowserType() {
 		String browserType = "";
 		if (_Driver instanceof ChromeDriver) {
@@ -397,11 +400,9 @@ public class BrowserManager {
 		return browserType;
 	}
 
-	
-	public static void main(String args[]) throws Exception
-	{
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
-		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\SnapShots");
-		FileUtility.deleteFolder(System.getProperty("user.dir")+"\\test-output");
+	public static void main(String args[]) throws Exception {
+		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\TestAutomationReports");
+		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\SnapShots");
+		FileUtility.deleteFolder(System.getProperty("user.dir") + "\\test-output");
 	}
 }
