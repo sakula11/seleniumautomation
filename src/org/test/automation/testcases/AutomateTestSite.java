@@ -16,7 +16,7 @@ public class AutomateTestSite extends BrowserManager{
 		navigateToURL("http://the-internet.herokuapp.com");
 		page.clickFileUploadLink();
 		
-		Assert.assertTrue(page.verifyUploadButton());
+		Assert.assertFalse(page.verifyUploadButton());
 		
 		Helper.navigateBack();
 		

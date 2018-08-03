@@ -22,6 +22,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.test.automation.constants.BrowserTYPE;
 import org.test.automation.exception.GmailException;
+import org.test.automation.utils.ChartGenerator;
 import org.test.automation.utils.DateUtils;
 import org.test.automation.utils.FileUtility;
 import org.test.automation.utils.PropertyReader;
@@ -107,7 +108,7 @@ public class BrowserManager {
 	@BeforeMethod
 	public void setup(@Optional("CHROME") String browserName) throws Exception {
 
-		startBrowser("FIREFOX");
+		startBrowser("CHROME");
 		navigateToURL(PropertyReader.getProperty("baseURL"));
 
 	}
@@ -240,13 +241,9 @@ public class BrowserManager {
 			totalskippedCount = totalskippedCount + skippedList.get(i);
 		}
 		grandTotalCount = totalpassedCount + totalfailedCount + totalskippedCount;
+		
+		chartName = ChartGenerator.getChart(totalpassedCount, totalfailedCount, totalskippedCount);
 
-		// JFreeChart pieChart = setPieChartData(totalpassedCount, totalfailedCount,
-		// totalskippedCount);
-
-		// chartName = "TestReport_" + getRandomValue() + ".png";
-		// createChart(pieChart, System.getProperty("user.dir") + "\\Reports\\" +
-		// chartName, 500, 300, 100);
 
 		if (baseURL == "") {
 			baseURL = PropertyReader.getProperty("baseURL");
@@ -266,7 +263,7 @@ public class BrowserManager {
 		log.info("Total Time Taken for Execution: " + totalTimeTaken);
 
 		String reportPath = "";
-		reportPath = "<img src=\"" + System.getProperty("user.dir") + "\\Snapshots\\" + chartName + "\">";
+		reportPath = "<img src=\"" + chartName + "\">";
 
 		ReportGenerator.writeToHTML(getBrowserType(), baseURL, modulesList, TCList, totalList, passedList, failedList,
 				skippedList, totalpassedCount, totalfailedCount, totalskippedCount, grandTotalCount, totalTimeList,
@@ -301,9 +298,6 @@ public class BrowserManager {
 					PropertyReader.getProperty("BCCField"));
 		}
 
-		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\TestAutomationReports");
-		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\SnapShots");
-		FileUtility.deleteFolder(System.getProperty("user.dir") + "\\test-output");
 	}
 
 	public void killProcess(String browserName) throws GmailException {
@@ -405,4 +399,5 @@ public class BrowserManager {
 		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\SnapShots");
 		FileUtility.deleteFolder(System.getProperty("user.dir") + "\\test-output");
 	}
+	
 }

@@ -90,8 +90,6 @@ public class ReportGenerator extends BrowserManager {
 		
 		sb.append(" : " + System.getProperty("os.name"));
 		sb.append("</b>");
-		sb.append("<br>");
-		sb.append("<br>");
 		sb.append("</td>");
 		sb.append("</tr>");
 		
@@ -174,32 +172,8 @@ public class ReportGenerator extends BrowserManager {
 				System.out.println("No Failures Found.");
 			}
 		}
-		sb.append("<br>");
-		sb.append("<br>");
-		sb.append("<br>");
-		sb.append("<br>");
 
-		sb.append("<tr>");
-		sb.append("<td>");
-		sb.append("</td>");
-		sb.append("</tr>");
-		sb.append("<tr>");
-		sb.append("<td>");
-		sb.append("</td>");
-		sb.append("</tr>");
-		sb.append("<tr>");
-		sb.append("<td>");
-		sb.append("</td>");
-		sb.append("</tr>");
-		sb.append("<tr>");
-		sb.append("<td>");
-		sb.append("</td>");
-		sb.append("</tr>");
-		sb.append("<tr>");
-		sb.append("<td>");
-		sb.append("</td>");
-		sb.append("</tr>");
-
+		
 		sb.append("<tr>");
 		sb.append("<td>");
 		sb.append("<font color= \"Green\">");
