@@ -11,10 +11,9 @@ import java.util.Iterator;
 import org.test.automation.base.BrowserManager;
 import org.test.automation.exception.GmailException;
 
-
 public class ReportGenerator extends BrowserManager {
 
-	public static void writeToHTML(String browserName,String url, ArrayList<String> _Modules, ArrayList<String> tCList,
+	public static void writeToHTML(String browserName, String url, ArrayList<String> _Modules, ArrayList<String> tCList,
 			ArrayList<Integer> totalList2, ArrayList<Integer> passedList2, ArrayList<Integer> failedList2,
 			ArrayList<Integer> skippedList2, int pc, int fc, int sc, int total, ArrayList<String> totalTimeList2,
 			String reportPath, ArrayList<String> exceptionList, ArrayList<String> snapShotList2, String totalTimeTaken,
@@ -56,7 +55,7 @@ public class ReportGenerator extends BrowserManager {
 		sb.append("<br>");
 		sb.append("</td>");
 		sb.append("</tr>");
-		
+
 		sb.append("<tr>");
 		sb.append("<td>");
 		sb.append("Browser");
@@ -68,10 +67,10 @@ public class ReportGenerator extends BrowserManager {
 		sb.append("<br>");
 		sb.append("</td>");
 		sb.append("</tr>");
-		
+
 		sb.append("<br>");
 		sb.append("<br>");
-		
+
 		sb.append("<tr>");
 		sb.append("<td>");
 		sb.append("URL");
@@ -87,13 +86,12 @@ public class ReportGenerator extends BrowserManager {
 		sb.append("<td>");
 		sb.append("Operating System");
 		sb.append("<b>");
-		
+
 		sb.append(" : " + System.getProperty("os.name"));
 		sb.append("</b>");
 		sb.append("</td>");
 		sb.append("</tr>");
-		
-		
+
 		sb.append("<br>");
 		sb.append("<br>");
 		sb.append("<br>");
@@ -173,7 +171,6 @@ public class ReportGenerator extends BrowserManager {
 			}
 		}
 
-		
 		sb.append("<tr>");
 		sb.append("<td>");
 		sb.append("<font color= \"Green\">");
@@ -322,7 +319,7 @@ public class ReportGenerator extends BrowserManager {
 		sb.append(reportPath);
 		sb.append("</td>");
 		sb.append("</tr>");
-		
+
 		sb.append("<tr>");
 		sb.append("<td>");
 		sb.append("<br>");
@@ -438,7 +435,57 @@ public class ReportGenerator extends BrowserManager {
 		bw.close();
 		return sb.toString();
 	}
-	
 
+	public static String sendGreetings(String imageFilePath, String message) throws GmailException, IOException {
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("<html>");
+		sb.append("<head>");
+		sb.append("</head>");
+		sb.append("<body>");
+		sb.append("<table>");
+		sb.append("<tr>");
+		sb.append("<td style = \"color: #000; font-weight: bold;width:15%\">");
+		sb.append(message);
+		sb.append("</td>");
+
+		sb.append("</tr>");
+		
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		sb.append("<br>");
+		
+		sb.append("<tr>");
+		sb.append(
+				"<td style = \"width:15%\">");
+		sb.append("<img src=\"cid:AbcXyz123\">");
+		sb.append("</td>");
+		sb.append("</tr>");
+		sb.append("</table>");
+		sb.append("</body>");
+		sb.append("</html>");
+
+		// System.out.println(sb.toString());
+
+		File file = new File(System.getProperty("user.dir") + "\\Greetings.html");
+		if (!file.exists()) {
+			file.createNewFile();
+		}
+		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(sb.toString());
+		bw.close();
+		return sb.toString();
+	}
+	
+	public static void main(String args[]) throws GmailException, IOException
+	{
+		sendGreetings(CURRENTDIR+"//Files//Morning_Wishes_Quotes_Pics_flowers.jpg", TimeUtils.getMessageBasedonTime()+" Have a Nice "+DateUtils.getDay_Week());
+	}
 
 }

@@ -18,8 +18,8 @@ import javax.mail.internet.MimeMultipart;
 
 import org.test.automation.base.BrowserManager;
 
-
 public class SendEmail extends BrowserManager {
+
 	public static void sendTestReports(String subject, String toField, String CCField, String BCCField) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -49,7 +49,7 @@ public class SendEmail extends BrowserManager {
 
 			messageBodyPart = new MimeBodyPart();
 
-			DataSource fds = new FileDataSource(CURRENTDIR+"//TestReport.html");
+			DataSource fds = new FileDataSource(CURRENTDIR + "//TestReport.html");
 
 			messageBodyPart.setDataHandler(new DataHandler(fds));
 			messageBodyPart.setHeader("Content-ID", "text/html");
