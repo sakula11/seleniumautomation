@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
 public class SendDailyGreetings {
 	
 //	String toField = "\"Srinivas Goud Nakka\"<snakka@innominds.com>,\"Pradeep Shivaraju\" <pshivaraju@innominds.com>";
-	String toField = "\"Srinivas Goud Nakka\"<snakka@innominds.com>,sagarika.kalal29@gmail.com";
+	String toField = "";
 	String CCField = "";
-	String BCCField = "";
+	String BCCField = "Srinivas Goud Nakka<snakka@innominds.com>,Kiran Kumar Potnuru <kirankumar_potnuru@trimble.com>";
 	ArrayList<String> list = new ArrayList<>();
 	
 	public static int getRandomValueIn(int range) throws GmailException {
