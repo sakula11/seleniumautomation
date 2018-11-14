@@ -125,7 +125,14 @@ public class BrowserManager {
 		switch (browserName) {
 		case "CHROME":
 			// killProcess("CHROME");
+			if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
+			{
 			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "\\ExecutableDrivers\\chromedriver.exe");
+			}
+			else if(System.getProperty("os.name").toUpperCase().contains("MAC"))
+			{
+			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "//ExecutableDrivers//chromedriver");
+			}
 			log.info("Launching Chrome Browser...");
 			_Driver = new ChromeDriver();
 
@@ -395,9 +402,10 @@ public class BrowserManager {
 	}
 
 	public static void main(String args[]) throws Exception {
-		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\TestAutomationReports");
-		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\SnapShots");
-		FileUtility.deleteFolder(System.getProperty("user.dir") + "\\test-output");
+//		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\TestAutomationReports");
+//		FileUtility.cleanFolder(System.getProperty("user.dir") + "\\SnapShots");
+//		FileUtility.deleteFolder(System.getProperty("user.dir") + "\\test-output");
+		System.out.println(System.getProperty("os.name"));
 	}
 	
 }

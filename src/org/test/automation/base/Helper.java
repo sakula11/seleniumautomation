@@ -14,71 +14,58 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.test.automation.exception.GmailException;
 
-
 public class Helper extends BrowserManager {
-	
+
 	public static int EXPLICIT_TIMEOUT = 30;
 	public static boolean flag = false;
-	
-	public static WebElement getelement(By locator) throws GmailException
-	{
+
+	public static WebElement getelement(By locator) throws GmailException {
 		WebElement element = null;
-		
+
 		WebDriverWait wait = new WebDriverWait(_Driver, 15);
-		try
-		{
+		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 			element = _Driver.findElement(locator);
+		} catch (TimeoutException toe) {
+			throw new GmailException("Locator not available: " + locator);
 		}
-		catch(TimeoutException toe)
-		{
-			throw new GmailException("Locator not available: "+locator);
-		}
-		
+
 		return element;
-		
+
 	}
-	
-	public static List<WebElement> getelements(By locator) throws GmailException
-	{
+
+	public static List<WebElement> getelements(By locator) throws GmailException {
 		List<WebElement> elements = null;
-		
+
 		WebDriverWait wait = new WebDriverWait(_Driver, 5);
-		try
-		{
+		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 			elements = _Driver.findElements(locator);
+		} catch (TimeoutException toe) {
+			throw new GmailException("Locator not available: " + locator);
 		}
-		catch(TimeoutException toe)
-		{
-			throw new GmailException("Locator not available: "+locator);
-		}
-		
+
 		return elements;
-		
+
 	}
-	
-	public static void click(By locator) throws GmailException
-	{
+
+	public static void click(By locator) throws GmailException {
 		getelement(locator).click();
 		waitForPageLoaded();
 	}
-	
-	public static void enterText(By locator,String value) throws GmailException
-	{
+
+	public static void enterText(By locator, String value) throws GmailException {
 		getelement(locator).sendKeys(value);
 	}
-	
-	public static boolean isElementDisplayed(By locator) throws GmailException
-	{
+
+	public static boolean isElementDisplayed(By locator) throws GmailException {
 		return getelement(locator).isDisplayed();
 	}
-	
-	public static String getCSSValue(By locator,String attribute) throws GmailException
-	{
+
+	public static String getCSSValue(By locator, String attribute) throws GmailException {
 		return getelement(locator).getCssValue(attribute);
 	}
-	
+
 	public static ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
 		@Override
 		public Boolean apply(WebDriver driver) {
@@ -135,14 +122,10 @@ public class Helper extends BrowserManager {
 			browserResponse();
 		}
 	}
-	
-	public static void navigateBack()
-	{
+
+	public static void navigateBack() {
 		_Driver.navigate().back();
 		waitForPageLoaded();
 	}
-	
-	
-	
 
 }

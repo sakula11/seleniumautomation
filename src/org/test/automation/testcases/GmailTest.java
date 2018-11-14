@@ -47,5 +47,24 @@ public class GmailTest extends BrowserManager {
 		Assert.assertTrue(gmailCompose.verifySuccessMessage());
 
 	}
+	
+	@Test()
+	public void TC_testGmailLoginFail() throws InterruptedException, GmailException, FileNotFoundException {
+
+		try {
+
+			_Driver.findElement(By.xpath("//a[text()='Sign In1']")).click();
+		} catch (Exception e) {
+
+		}
+
+		login.enterGmailUserName(PropertyReader.getProperty("gmailUserName"));
+		login.clickNextButton();
+		login.enterGmailPassword(PropertyReader.getProperty("gmailPassword"));
+		login.clickNextButton();
+
+		Assert.assertTrue(login.verifyComposeButtonIsDisplayed());
+
+	}
 
 }
