@@ -16,7 +16,7 @@ public class SendDailyGreetings {
 //	String toField = "\"Srinivas Goud Nakka\"<snakka@innominds.com>,\"Pradeep Shivaraju\" <pshivaraju@innominds.com>";
 	String toField = "";
 	String CCField = "";
-	String BCCField = "Srinivas Goud Nakka<snakka@innominds.com>,Kiran Kumar Potnuru <kirankumar_potnuru@trimble.com>";
+	String BCCField = "Srinivas Goud Nakka<snakka@innominds.com>";
 	ArrayList<String> list = new ArrayList<>();
 	
 	public static int getRandomValueIn(int range) throws GmailException {

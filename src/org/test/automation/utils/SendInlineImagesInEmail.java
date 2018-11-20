@@ -16,6 +16,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+
 public class SendInlineImagesInEmail {
 	public static void sendGreetings(String subject, String toField, String CCField, String BCCField,String filePath) throws IOException {
 		Properties props = new Properties();
@@ -42,9 +43,14 @@ public class SendInlineImagesInEmail {
 
          // Create a default MimeMessage object.
          Message message = new MimeMessage(session);
-
+         
          // Set From: header field of the header.
          message.setFrom(new InternetAddress(from));
+
+         message.setReplyTo(new javax.mail.Address[]
+        		 {
+        		     new javax.mail.internet.InternetAddress("1srinivas.java@gmail.com")
+        		 });
 
          // Set To: header field of the header.
          message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toField));
