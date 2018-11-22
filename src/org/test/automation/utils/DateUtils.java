@@ -21,6 +21,14 @@ public class DateUtils {
 								// format eg:12-02-2012 12:34:42
 	}
 	
+	public static Date getDateTime() {
+		Calendar cal = Calendar.getInstance();
+		Date date = cal.getTime();
+
+		return date;// returns date in dd-MM-yyyy HH:mm:ss
+								// format eg:12-02-2012 12:34:42
+	}
+	
 	public static String getDay_Week() throws GmailException {
 		String day_of_week = "";
 		Calendar now = Calendar.getInstance();
