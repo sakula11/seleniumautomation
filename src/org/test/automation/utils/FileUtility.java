@@ -30,5 +30,11 @@ public class FileUtility {
 		FileUtils.deleteDirectory(file);
 		System.out.println("Done. folder deleted: " + folderName);
 	}
+	
+	public static void main(String args[]) throws IOException
+	{
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\TestAutomationReports");
+		FileUtility.cleanFolder(System.getProperty("user.dir")+"\\Snapshots");
+	}
 
 }

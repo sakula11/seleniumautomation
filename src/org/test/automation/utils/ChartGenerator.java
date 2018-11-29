@@ -8,9 +8,10 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.test.automation.base.BrowserManager;
+import org.test.automation.exception.GmailException;
 
 public class ChartGenerator extends BrowserManager {
-	public static String getChart(int passedcount, int failedCount, int SkippedCount) {
+	public static String getChart(int passedcount, int failedCount, int SkippedCount) throws GmailException {
 		String chartPath = "";
 		DefaultPieDataset pieDataset = new DefaultPieDataset();
 		if (passedcount > 0) {
@@ -38,7 +39,7 @@ public class ChartGenerator extends BrowserManager {
 		try {
 			ChartUtilities.saveChartAsJPEG(new File(CURRENTDIR + "\\Snapshots\\AutomationTestReport.jpg"), piechart,
 					600, 400);
-			chartPath = CURRENTDIR + "\\Snapshots\\AutomationTestReport.jpg";
+			chartPath = CURRENTDIR + "\\Snapshots\\AutomationTestReport"+getRandomValue()+".jpg";
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
