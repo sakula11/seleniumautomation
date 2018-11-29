@@ -304,6 +304,8 @@ public class BrowserManager {
 					PropertyReader.getProperty("ToField"), PropertyReader.getProperty("CCField"),
 					PropertyReader.getProperty("BCCField"));
 		}
+		
+		FileUtility.deleteFolder(".\\test-output");
 
 	}
 
