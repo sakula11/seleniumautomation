@@ -127,5 +127,25 @@ public class Helper extends BrowserManager {
 		_Driver.navigate().back();
 		waitForPageLoaded();
 	}
+	
+	public static String getOSType()
+	{
+		return System.getProperty("os.name");
+	}
+	
+	public static String getFileSeparator()
+	{
+		String OS = System.getProperty("os.name");
+		String fs = "";
+		if(OS.equalsIgnoreCase("WINDOWS"))
+		{
+			fs = "\\";
+		}
+		else if(OS.equalsIgnoreCase("MAC")||OS.equalsIgnoreCase("LINUX"))
+		{
+			fs = "//";
+		}
+		return fs;
+	}
 
 }

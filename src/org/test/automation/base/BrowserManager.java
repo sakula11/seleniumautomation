@@ -41,6 +41,7 @@ import org.testng.annotations.Parameters;
 
 public class BrowserManager {
 
+	protected static final String fs = Helper.getFileSeparator();
 	protected static WebDriver _Driver = null;
 	protected static String CURRENTDIR = System.getProperty("user.dir");
 	public static Logger log = Logger.getLogger(BrowserManager.class);
@@ -125,13 +126,15 @@ public class BrowserManager {
 		switch (browserName) {
 		case "CHROME":
 			// killProcess("CHROME");
-			if(System.getProperty("os.name").toUpperCase().contains("WINDOWS"))
-			{
-			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "\\ExecutableDrivers\\chromedriver.exe");
-			}
-			else if(System.getProperty("os.name").toUpperCase().contains("MAC"))
-			{
-			System.setProperty("webdriver.chrome.driver", CURRENTDIR + "//ExecutableDrivers//chromedriver");
+			if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")) {
+				log.info("Executing on Windows machine...");
+				System.setProperty("webdriver.chrome.driver", CURRENTDIR + fs+ "ExecutableDrivers"+fs+"chromedriver.exe");
+			} else if (System.getProperty("os.name").toUpperCase().contains("MAC")) {
+				log.info("Executing on MAC machine...");
+				System.setProperty("webdriver.chrome.driver", CURRENTDIR + fs+"ExecutableDrivers"+fs+"chromedriver_MAC");
+			} else if (System.getProperty("os.name").toUpperCase().contains("LINUX")) {
+				log.info("Executing on Linux machine...");
+				System.setProperty("webdriver.chrome.driver", CURRENTDIR + fs+"ExecutableDrivers"+fs+"chromedriver_Linux");
 			}
 			log.info("Launching Chrome Browser...");
 			_Driver = new ChromeDriver();
@@ -139,7 +142,7 @@ public class BrowserManager {
 			break;
 		case "FIREFOX":
 			// killProcess("FIREFOX");
-			System.setProperty("webdriver.gecko.driver", CURRENTDIR + "\\ExecutableDrivers\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", CURRENTDIR + fs+"ExecutableDrivers"+fs+"geckodriver.exe");
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setBrowserName("firefox");
@@ -248,9 +251,8 @@ public class BrowserManager {
 			totalskippedCount = totalskippedCount + skippedList.get(i);
 		}
 		grandTotalCount = totalpassedCount + totalfailedCount + totalskippedCount;
-		
-		chartName = ChartGenerator.getChart(totalpassedCount, totalfailedCount, totalskippedCount);
 
+		chartName = ChartGenerator.getChart(totalpassedCount, totalfailedCount, totalskippedCount);
 
 		if (baseURL == "") {
 			baseURL = PropertyReader.getProperty("baseURL");
@@ -277,21 +279,21 @@ public class BrowserManager {
 				reportPath, exceptionList, snapShotList, totalTimeTaken, TimeUtils.getMessageBasedonTime(), tcDetails);
 
 		String destpath = "";
-		destpath = System.getProperty("user.dir") + "\\TestAutomationReports\\" + DateUtils.DateTime();
+		destpath = System.getProperty("user.dir") + fs+"TestAutomationReports" +fs+ DateUtils.DateTime();
 
-		FileUtils.copyDirectory(new File(System.getProperty("user.dir") + "\\Snapshots"), new File(destpath));
-		log.info("Folder: " + System.getProperty("user.dir") + "\\Reports Copied to " + destpath);
-		FileUtils.copyFileToDirectory(new File(System.getProperty("user.dir") + "\\TestReport.html"),
+		FileUtils.copyDirectory(new File(System.getProperty("user.dir") + fs+"Snapshots"+fs), new File(destpath));
+		log.info("Folder: " + System.getProperty("user.dir") + fs+"Reports Copied to " + destpath);
+		FileUtils.copyFileToDirectory(new File(System.getProperty("user.dir") + fs+"TestReport.html"),
 				new File(destpath));
 
-		log.info("File: " + CURRENTDIR + "\\TestReport.html Copied to " + destpath);
+		log.info("File: " + CURRENTDIR + fs+"TestReport.html Copied to " + destpath);
 		try {
-			FileUtils.copyFileToDirectory(new File(System.getProperty("user.dir") + "\\testng-failed.xml"),
+			FileUtils.copyFileToDirectory(new File(System.getProperty("user.dir") + fs+"testng-failed.xml"),
 					new File(destpath));
 
-			log.info("File: " + System.getProperty("user.dir") + "\\testng-failed.xml Copied to " + destpath);
+			log.info("File: " + System.getProperty("user.dir") + fs+"testng-failed.xml Copied to " + destpath);
 		} catch (FileNotFoundException fnf) {
-			System.out.println(System.getProperty("user.dir") + "\\testng-failed.xml does not exist");
+			System.out.println(System.getProperty("user.dir") + fs+"testng-failed.xml does not exist");
 		}
 
 	}
@@ -341,13 +343,13 @@ public class BrowserManager {
 		}
 		fileName = "Report_Snapshot_" + getRandomValue() + ".png";
 		String path = "";
-		path = System.getProperty("user.dir") + "\\Snapshots\\" + fileName;
+		path = System.getProperty("user.dir") + fs + "Snapshots" + fs + fileName;
 		if (new File(path).exists()) {
 			new File(path).mkdirs();
 		}
 		// log.info("fileName: " + fileName);
 		try {
-			FileUtility.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\Snapshots\\" + fileName));
+			FileUtility.copyFile(scrFile, new File(System.getProperty("user.dir") + fs + "Snapshots" + fs + fileName));
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -407,5 +409,5 @@ public class BrowserManager {
 //		FileUtility.deleteFolder(System.getProperty("user.dir") + "\\test-output");
 		System.out.println(System.getProperty("os.name"));
 	}
-	
+
 }

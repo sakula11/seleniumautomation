@@ -22,8 +22,8 @@ public class PropertyReader extends BrowserManager {
 	public static Properties loadProperties() throws GmailException, FileNotFoundException {
 
 		String currentDir = "";
-		String folder = "\\Properties\\";
-		currentDir = CURRENTDIR + folder;
+		String folder = "Properties";
+		currentDir = CURRENTDIR + fs+ folder+ fs;
 		Properties props = new Properties();
 		FileReader reader = new FileReader(currentDir + "config.properties");
 		try {
